@@ -1,0 +1,86 @@
+#N canvas -2 6 722 670 10;
+#X msg 224 96 devices;
+#X msg 173 60 devicename /dev/rfcomm0;
+#X obj 302 184 route data;
+#X floatatom 194 258 10 0 0 1 baud - -;
+#X floatatom 269 299 3 0 0 3 parity - -;
+#X floatatom 294 299 3 0 0 2 stop - -;
+#X floatatom 319 298 3 0 0 3 data - -;
+#X floatatom 395 260 3 0 0 0 port - -;
+#X obj 344 264 tgl 15 0 empty empty rts/cts -10 20 1 11 -24198 -258699
+-1 0 1;
+#X obj 370 280 tgl 15 0 empty empty xon/xoff -14 20 1 11 -24198 -258699
+-1 0 1;
+#X text 133 298 serial packet format:;
+#X text 283 254 handshaking:;
+#X text 91 330 flow control inputs:;
+#X obj 219 330 tgl 15 0 empty empty dsr 0 20 1 11 -24198 -258699 -1
+0 1;
+#X obj 244 330 tgl 15 0 empty empty cts 0 20 1 11 -24198 -258699 -1
+0 1;
+#X obj 420 261 tgl 15 0 empty empty open -6 20 1 11 -24198 -258699
+-1 0 1;
+#X obj 445 295 print port_list;
+#X obj 559 251 print other;
+#X obj 470 258 tgl 15 0 empty empty hupcl -6 20 1 11 -24198 -258699
+-1 0 1;
+#X floatatom 495 271 10 0 0 1 rxerrors - -;
+#X obj 194 221 route baud dsr cts parity stop data rtscts xonxoff port
+open ports hupcl rxerrors;
+#X obj 216 154 comport 1 115200;
+#X obj 323 358 print data;
+#X msg 371 83 parity 0;
+#X msg 461 124 ports;
+#X msg 372 60 bits 8;
+#X msg 369 107 stopbit 1;
+#X msg 171 82 close;
+#X msg 104 132 open 1;
+#X floatatom 135 228 5 0 0 0 - - -;
+#X obj 62 217 print;
+#X obj 68 62 key;
+#X obj 31 101 sel 0;
+#X msg 53 157;
+#X floatatom 52 137 5 0 0 0 - - -;
+#X obj 183 470 split 0 100;
+#X obj 286 473 split 101 200;
+#X obj 396 471 split 201 300;
+#X obj 183 506 smooth;
+#X floatatom 183 537 5 0 0 0 - - -;
+#X obj 285 503 smooth;
+#X floatatom 285 534 5 0 0 0 - - -;
+#X floatatom 393 533 5 0 0 0 - - -;
+#X connect 0 0 21 0;
+#X connect 1 0 21 0;
+#X connect 20 0 3 0;
+#X connect 20 1 13 0;
+#X connect 20 2 14 0;
+#X connect 20 3 4 0;
+#X connect 20 4 5 0;
+#X connect 20 5 6 0;
+#X connect 20 5 22 0;
+#X connect 20 6 8 0;
+#X connect 20 7 9 0;
+#X connect 20 8 7 0;
+#X connect 20 9 15 0;
+#X connect 20 10 16 0;
+#X connect 20 11 18 0;
+#X connect 20 12 19 0;
+#X connect 20 13 17 0;
+#X connect 21 0 29 0;
+#X connect 21 0 30 0;
+#X connect 21 0 35 0;
+#X connect 21 0 36 0;
+#X connect 21 0 37 0;
+#X connect 21 1 20 0;
+#X connect 23 0 21 0;
+#X connect 25 0 21 0;
+#X connect 26 0 21 0;
+#X connect 27 0 21 0;
+#X connect 28 0 21 0;
+#X connect 31 0 32 0;
+#X connect 32 1 34 0;
+#X connect 35 0 38 0;
+#X connect 36 0 40 0;
+#X connect 37 0 42 0;
+#X connect 38 0 39 0;
+#X connect 40 0 41 0;
